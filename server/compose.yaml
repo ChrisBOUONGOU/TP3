@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: prog-web-formatif7-php
+    ports:
+      - "81:80"
+    volumes:
+      - ..:/var/www/html/ # ou copier le code dans le fichier Dockerfile
