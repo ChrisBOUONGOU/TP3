@@ -11,7 +11,12 @@ function afficheInscription($informations, $error = false){
     <form method="post">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Nom</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="text" name="nom" placeholder="Nom"
+                   value=<?= array_key_exists('oldValue', $informations)? $informations['oldValue']:"" ?>
+            ><br>
+            <?php if ($error) {
+                echo "<span style='color:red'>{$error}</span><br>";
+            } ?>
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Mot de passe</label>

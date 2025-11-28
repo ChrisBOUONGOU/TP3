@@ -88,7 +88,20 @@ function ajouteInfo($informations)
 function inscriptionUser($informations)
 {
     if (isset($_POST['inscription'])) {
+        //on récupère l'informtion du formulaire
+        $informations['oldValue'] = $_POST['nom'];
 
+        //on valide l'information
+        if (valideInfo($informations['oldValue'] )) {
+
+            //si valide on l'ajoute dans le modele et on affiche le tout
+            $informations['modele']->addInfo($informations['oldValue'] );
+            affiche($informations);
+        } else {
+            //En cas d'erreur, on remet l'information saisie dans le formulaire
+            //pour demander à l'utilisateur de les corriger
+            afficheAjouteForm($informations, "info trop courte");
+        }
     }
 }
 
