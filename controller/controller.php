@@ -85,6 +85,13 @@ function ajouteInfo($informations)
 
 }
 
+function inscriptionUser($informations)
+{
+    if (isset($_POST['inscription'])) {
+
+    }
+}
+
 function afficheAjouteForm($informations, $error = false)
 {
 

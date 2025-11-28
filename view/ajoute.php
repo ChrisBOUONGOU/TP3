@@ -8,8 +8,7 @@ function afficheAjoute($informations, $error = false)
     afficheHeader($informations);
     ?>
         <form action="/index.php/saisirInfo" method="post">
-    <form action="/index.php/saisirInfo"
-          method="post">
+
 
         <label for="info">Nouvelle information</label><br>
         <input type="text" name="info" placeholder="info"
