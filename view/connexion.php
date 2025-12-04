@@ -7,7 +7,7 @@ require_once 'view/footer.php';
 function afficheConnexion($informations, $error = false){
     afficheHeader($informations);
 ?>
-    <form>
+    <form action="" method="post">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Nom</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">

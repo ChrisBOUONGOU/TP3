@@ -35,6 +35,10 @@ switch ($uri) {
     case 'afficheInscription':
         afficheInscriptionForm($informations);
         break;
+    case 'inscription':
+        ajoutUser($informations);
+        break;
+
 }
 
 // Enregistrement des données du modèle.
@@ -85,11 +89,13 @@ function ajouteInfo($informations)
 
 }
 
-function inscriptionUser($informations)
+function ajoutUser($informations)
 {
     if (isset($_POST['inscription'])) {
         //on récupère l'informtion du formulaire
         $informations['oldValue'] = $_POST['nom'];
+        $informations['oldValue'] = $_POST['password'];
+        $informations['oldValue'] = $_POST['plainpassword'];
 
         //on valide l'information
         if (valideInfo($informations['oldValue'] )) {
@@ -100,7 +106,7 @@ function inscriptionUser($informations)
         } else {
             //En cas d'erreur, on remet l'information saisie dans le formulaire
             //pour demander à l'utilisateur de les corriger
-            afficheAjouteForm($informations, "info trop courte");
+            afficheInscriptionForm($informations, "info trop courte");
         }
     }
 }
@@ -132,7 +138,7 @@ function afficheInscriptionForm($informations, $error = false)
  */
 function valideInfo($info)
 {
-    return is_string($info) && strlen(trim($info)) > 3;
+    return is_string($info) && strlen(trim($info)) > 2;
 }
 
 
