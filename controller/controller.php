@@ -20,6 +20,9 @@ $informations['date'] = date('d/m/Y');
 
 switch ($uri) {
     case ''; // s'il n'y a pas d'URI, on affiche le site
+    case 'afficheConnexion':
+        afficheConnexionForm($informations);
+        break;
     case 'affiche':
         affiche($informations);
         break;
@@ -28,9 +31,6 @@ switch ($uri) {
         break;
     case 'saisirInfo':
         ajouteInfo($informations);
-        break;
-    case 'afficheConnexion':
-        afficheConnexionForm($informations);
         break;
     case 'afficheInscription':
         afficheInscriptionForm($informations);
@@ -106,7 +106,7 @@ function ajoutUser($informations)
         } else {
             //En cas d'erreur, on remet l'information saisie dans le formulaire
             //pour demander à l'utilisateur de les corriger
-            afficheInscriptionForm($informations, "info trop courte");
+            afficheInscriptionForm($informations, "Nom trop court");
         }
     }
 }

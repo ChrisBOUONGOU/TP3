@@ -12,14 +12,14 @@ function afficheHeader($informations)
     <body>
 <div class="ligne">
     <div class="gauche">
-        <input type="text" placeholder="Rechercher...">
-        <button>Recherche</button>
+        <!--<input type="text" placeholder="Rechercher...">
+        <button>Recherche</button>-->
     </div>
 
     <h1><header><?= $informations['titre'] ?></header></h1>
 
     <div>
-        <button onclick="window.location.href='http://localhost:81/index.php/affiche'">Page d'accueil</button>
+        <!--<button onclick="window.location.href='http://localhost:81/index.php/affiche'">Page d'accueil</button>-->
         <button onclick="window.location.href='http://localhost:81/index.php/afficheConnexion'">Connexion</button>
         <button onclick="window.location.href='http://localhost:81/index.php/afficheInscription'">Inscription</button>
     </div>
