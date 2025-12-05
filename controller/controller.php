@@ -2,12 +2,12 @@
 
 // éléments nécessaires au fonctionnement du site
 require_once 'model/modele.php';
-require_once 'model/user.php';
+require_once 'model/Guest.php';
 require_once 'model/sauvegardeSession.php';
 
 // ROUTING Détermine l'action à faire en fonction de l'URI
     // On enlève les paramètres
-$uri = $_Server['REQUEST_URI'] = explode('?', $_SERVER['REQUEST_URI'])[0];//on enlève les paramètres
+$uri = $_SERVER['REQUEST_URI'] = explode('?', $_SERVER['REQUEST_URI'])[0];//on enlève les paramètres
     //on enleve la partie connue
 $uri = explode('/', $uri)[2];//on ne garde que l'uri après le site
 
@@ -101,14 +101,15 @@ function ajoutUser($informations)
         $informations['oldValue']['plainpassword'] = $plainpassword;
 
 
-        $user = new User($nom, $password, date("Y-m-d H:i:s"));
 
-        $informations['User']->save($user);
+
+
         //on valide l'information
         if (valideName($informations['oldValue'] ) || $password == $plainpassword) {
 
             //si valide on l'ajoute dans le modele et on affiche le tout
-            $informations['User']->addInfo($informations['oldValue'] );
+            $guest = new Guest($nom, $password, date("Y-m-d H:i:s"));
+            $informations['Guest']->addInfo($guest);
             affiche($informations);
 
         } else {

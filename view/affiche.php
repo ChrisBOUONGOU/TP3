@@ -15,8 +15,8 @@ function afficher($informations)
                 <h5 class="card-title"> Un titre (doit être unique)</h5>
                 <p class="card-text">Un texte (au moins 4 mots)</p>
                 <p>Le nom de l'utilisateur (déterminé automatiquement par le serveur)<?php
-                    $monUser = new User("Chris","user","1236-5-58");
-                    echo $monUser->getNom();
+
+                    echo $_POST['nom'];
     
                     ?></p>
             </div>

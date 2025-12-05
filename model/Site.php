@@ -1,6 +1,6 @@
 <?php
 
-namespace pratique;
+namespace model;
 
 class Site
 {

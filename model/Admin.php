@@ -1,8 +1,6 @@
 <?php
 
-namespace pratique;
-
-use pratique\User;
+namespace model;
 
 class Admin extends User
 {
