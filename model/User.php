@@ -12,6 +12,11 @@ class User
         $this->date_inscription = $date_inscription;
     }
 
+    public function addInfo($nouveauUser)
+    {
+        $this->users[] = $nouveauUser;
+    }
+
     public function getNom()
     {
         return $this->nom;

@@ -23,21 +23,20 @@ switch ($uri) {
     case 'afficheConnexion':
         afficheConnexionForm($informations);
         break;
-    case 'affiche':
-        affiche($informations);
-        break;
-    case 'afficheAjoute':
-        afficheAjouteForm($informations);
-        break;
-    case 'saisirInfo':
-        ajouteInfo($informations);
-        break;
     case 'afficheInscription':
         afficheInscriptionForm($informations);
         break;
     case 'inscription':
         ajoutUser($informations);
         break;
+    case 'affiche':
+        affiche($informations);
+        break;
+    case 'afficheAjoute':
+        afficheAjouteForm($informations);
+        break;
+
+
 
 }
 
@@ -92,21 +91,31 @@ function ajouteInfo($informations)
 function ajoutUser($informations)
 {
     if (isset($_POST['inscription'])) {
-        //on récupère l'informtion du formulaire
-        $informations['oldValue'] = $_POST['nom'];
-        $informations['oldValue'] = $_POST['password'];
-        $informations['oldValue'] = $_POST['plainpassword'];
 
+        $nom = $_POST['nom'] ?? "";
+        $password = $_POST['password'] ?? "";
+        $plainpassword = $_POST['plainpassword'] ?? "";
+        //on récupère l'informtion du formulaire
+        $informations['oldValue']['nom'] = $nom;
+        $informations['oldValue']['password'] = $password;
+        $informations['oldValue']['plainpassword'] = $plainpassword;
+
+
+        $user = new User($nom, $password, date("Y-m-d H:i:s"));
+
+        $informations['User']->save($user);
         //on valide l'information
-        if (valideInfo($informations['oldValue'] )) {
+        if (valideName($informations['oldValue'] ) || $password == $plainpassword) {
 
             //si valide on l'ajoute dans le modele et on affiche le tout
-            $informations['modele']->addInfo($informations['oldValue'] );
+            $informations['User']->addInfo($informations['oldValue'] );
             affiche($informations);
+
         } else {
             //En cas d'erreur, on remet l'information saisie dans le formulaire
             //pour demander à l'utilisateur de les corriger
             afficheInscriptionForm($informations, "Nom trop court");
+            afficheInscriptionForm($informations, "Les mots de passe ne correspondent pas");
         }
     }
 }
@@ -132,11 +141,10 @@ function afficheInscriptionForm($informations, $error = false)
     afficheInscription($informations, $error);
 }
 
-/** Valide l'information reçue. Elle doit avoir au moins 2 caractèresé
- * @param $info l'information à valider
- * @return bool true si l'information est valide, false sinon
+/** Valide le nom reçue. Elle doit avoir au moins 2 caractèresé
+ * @return bool true si le nom est valide, false sinon
  */
-function valideInfo($info)
+function valideName($info)
 {
     return is_string($info) && strlen(trim($info)) > 2;
 }

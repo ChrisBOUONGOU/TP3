@@ -8,7 +8,7 @@ function afficheInscription($informations, $error = false){
     afficheHeader($informations);
     ?>
     <div class="center-wrapper">
-        <form action="/index.php/inscription" method="post" class="formInc">
+        <form action="/index.php/affiche" method="post" class="formInc">
 
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Nom</label>
